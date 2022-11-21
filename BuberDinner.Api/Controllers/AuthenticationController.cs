@@ -1,7 +1,5 @@
-using BuberDinner.Application.Common.Errors;
 using BuberDinner.Application.Services.Authentication;
 using BuberDinner.Contracts.Authentication;
-using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 using ErrorOr;
 using BuberDinner.Domain.Common.Errors;
@@ -28,28 +26,12 @@ namespace BuberDinner.Api.Controllers
 
       return authResult.Match(authResult => Ok(MapAuthResult(authResult)),
         errors => Problem(errors));
-
-
-      // if (!registerResult.IsError)
-      // {
-      //   return Ok(MapAuthResult(registerResult.Value));
-      // }
-
-      // var firstError = registerResult.Errors[0];
-
-      // return firstError is DuplicateEmailError
-      //   ? Problem(statusCode: StatusCodes.Status409Conflict, detail: "Email already exists.")
-      //   : (IActionResult)Problem();
     }
 
     [HttpPost("login")]
     public IActionResult Login(LoginRequest request)
     {
       ErrorOr<AuthenticationResult> authResult = _authenticationService.Login(request.Email, request.Password);
-
-      // var response = new AuthenticationResponse(authResult.User.Id, authResult.User.FirstName, authResult.User.LastName, authResult.User.Email, authResult.Token);
-
-      // return Ok(response);
 
       if (authResult.IsError && authResult.FirstError == Errors.Authentication.InvalidCredentials)
       {

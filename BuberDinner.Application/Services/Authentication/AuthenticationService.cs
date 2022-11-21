@@ -1,8 +1,6 @@
 using BuberDinner.Application.Common.Interfaces.Authentication;
 using BuberDinner.Application.Common.Interfaces.Persistence;
 using BuberDinner.Domain.Entities;
-using BuberDinner.Application.Common.Errors;
-using FluentResults;
 using ErrorOr;
 using BuberDinner.Domain.Common.Errors;
 
@@ -23,10 +21,6 @@ namespace BuberDinner.Application.Services.Authentication
       if (_userRepository.GetUserByEmail(email) is not null)
       {
         return Errors.User.DuplicateEmail;
-        //return new AuthenticationResult(false, "User already exists");
-        //throw new Exception("User with given email already exists.");
-        //throw new DuplicateEmailException();
-        //return Result.Fail<AuthenticationResult>(new[] { new DuplicateEmailError() });
       }
 
       var user = new User { FirstName = firstName, LastName = lastName, Email = email, Password = password };
