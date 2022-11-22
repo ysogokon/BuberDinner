@@ -30,7 +30,7 @@ namespace BuberDinner.Api.Controllers
 
       return authResult.Match(
         authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
-        errors => Problem(errors));
+        errors => Problem(errors, GetFirstError(errors)));
     }
 
     [HttpPost("login")]
@@ -46,7 +46,7 @@ namespace BuberDinner.Api.Controllers
 
       return authResult.Match(
         authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
-        errors => Problem(errors));
+        errors => Problem(errors, GetFirstError(errors)));
     }
   }
 }
