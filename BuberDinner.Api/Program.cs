@@ -1,11 +1,11 @@
-using BuberDinner.Api.Common.Errors;
+using BuberDinner.Api;
 using BuberDinner.Application;
 using BuberDinner.Infrastructure;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 {
   builder.Services
+  .AddPresentation()
   .AddApplication()
   .AddInfrastructure(builder.Configuration);
 
@@ -13,9 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
   //     // (second approach for error handling - exeption filter attrubute)
   //     options => options.Filters.Add<ErrorHandlingFilterAttribute>()
   //   );
-  builder.Services.AddControllers();
 
-  builder.Services.AddSingleton<ProblemDetailsFactory, BuberDinnerProblemDetailsFactory>();
 }
 
 var app = builder.Build();
