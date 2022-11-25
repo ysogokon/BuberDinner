@@ -13,10 +13,17 @@ namespace BuberDinner.Infrastructure
   {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager config)
     {
-      services.Configure<JwtSettings>(config.GetSection(JwtSettings.SectionName));
-      services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+      services.AddAuth(config);
       services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
       services.AddScoped<IUserRepository, UserRepository>();
+
+      return services;
+    }
+
+    public static IServiceCollection AddAuth(this IServiceCollection services, ConfigurationManager config)
+    {
+      services.Configure<JwtSettings>(config.GetSection(JwtSettings.SectionName));
+      services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
 
       return services;
     }

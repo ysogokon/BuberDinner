@@ -35,7 +35,7 @@ public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
     // var errors = validationResult.Errors
     // .Select(validationFailure => Error.Validation(validationFailure.PropertyName, validationFailure.ErrorMessage))
     // .ToList();
-    // OR:
+    // OR use ConvertAll:
     var errors = validationResult.Errors
     .ConvertAll(validationFailure => Error.Validation(
         validationFailure.PropertyName,
