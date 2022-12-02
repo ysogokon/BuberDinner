@@ -1,6 +1,6 @@
 @host=https://localhost:7298
 @hostId=test
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJnaXZlbl9uYW1lIjoiWXVyaXkiLCJmYW1pbHlfbmFtZSI6IlNvZ29rb24iLCJqdGkiOiJjMmE4N2U5ZS0wM2Y2LTQ3OWEtYTZiOS1kYTMzY2VlOTdjMDUiLCJleHAiOjE2NzAwMDExNzcsImlzcyI6IkJ1YmVyRGlubmVyIiwiYXVkIjoiQnViZXJEaW5uZXIifQ.Gu4cythwZhbLf-TSfla8y6BJuR7308iGI3NzAn6fZnQ
+@token=test
 
 POST {{host}}/hosts/{{hostId}}/menus
 Content-Type: application/json
