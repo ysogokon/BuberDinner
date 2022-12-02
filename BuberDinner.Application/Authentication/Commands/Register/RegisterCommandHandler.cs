@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BuberDinner.Application.Common.Interfaces.Authentication;
 using BuberDinner.Application.Common.Interfaces.Persistence;
-using BuberDinner.Domain.Entities;
+using BuberDinner.Domain.User.Entities;
 using BuberDinner.Domain.Common.Errors;
 using ErrorOr;
 using MediatR;
